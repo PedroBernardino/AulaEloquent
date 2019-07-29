@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return response()->sucess($users);
+        return response()->success($users);
     }
 
     

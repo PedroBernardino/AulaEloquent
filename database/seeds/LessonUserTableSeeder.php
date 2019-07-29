@@ -12,6 +12,6 @@ class LessonUserTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\LessonUser::class,27)->create();
+        factory(App\LessonUser::class,8)->create();
     }
 }

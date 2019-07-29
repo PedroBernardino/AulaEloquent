@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Lesson;
+use App\Lesson;
 
-class LesonController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class LesonController extends Controller
     {
         //
         $lessons = Lesson::all();
-        return response()->sucess($lessons);
+        return response()->success($lessons);
 
     }
 
