@@ -16,6 +16,7 @@ class LesonController extends Controller
     {
         //
         $lessons = Lesson::all();
+        return response()->sucess($lessons);
 
     }
 

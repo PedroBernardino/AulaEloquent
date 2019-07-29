@@ -37,10 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $primarykey = "DRE";
+    protected $primarykey = 'DRE';
 
     public function lessons(){
-        return $this->hasMany('App\Lesson','lesson_user','DRE','lesson_id');
+        return $this->belongsToMany(Lesson::class,'lesson_user','user_DRE','lesson_id', 'DRE', 'id');
     }
 
 

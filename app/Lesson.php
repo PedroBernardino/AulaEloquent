@@ -9,7 +9,7 @@ class Lesson extends Model
     //
     
     public function users(){
-        return $this->hasMany('App\User','lesson_user','lesson_id','DRE');
+        return $this->belongsToMany(User::class,'lesson_user','lesson_id','user_DRE', 'id', 'DRE');
     }
     
 }
