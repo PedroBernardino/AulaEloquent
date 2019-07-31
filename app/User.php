@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    use SoftDeletes;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -42,7 +44,17 @@ class User extends Authenticatable
     public function lessons(){
         return $this->belongsToMany(Lesson::class,'lesson_user','user_DRE','lesson_id', 'DRE', 'id');
     }
-
-
+    public function findthree() {
+        $users = User::all();
+        $filter = [];
+        foreach($users as $user)
+        {
+            if($user->lessons->count() > 2)
+            {
+                array_push($filter, $user);
+            }
+        }
+        return $filter;
+    }
 
 }
