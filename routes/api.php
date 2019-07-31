@@ -19,3 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('user','UserController@index');
 Route::get('lesson','LessonController@index');
+
+Route::post('login', 'API\PassportController@login');
+Route::post('register', 'API\PassportController@register');
+
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('logout', 'API\PassportController@logout');
+    Route::get('get-details', 'API\PassportController@getDetails');
+});

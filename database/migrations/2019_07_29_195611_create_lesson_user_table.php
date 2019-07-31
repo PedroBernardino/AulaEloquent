@@ -16,7 +16,7 @@ class CreateLessonUserTable extends Migration
         Schema::create('lesson_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('lesson_id')->unsigned();
-            $table->bigInteger('user_DRE')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
         
@@ -26,7 +26,7 @@ class CreateLessonUserTable extends Migration
         });
         Schema::table('lesson_user', function(Blueprint $table)
         {
-            $table->foreign('user_DRE')->references('DRE')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         
     }
