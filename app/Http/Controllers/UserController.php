@@ -18,5 +18,10 @@ class UserController extends Controller
         return response()->success($users);
     }
 
+    public function is_admin()
+    {
+        return response()->json('é admin');
+    }
+
     
 }
