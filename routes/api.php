@@ -26,5 +26,5 @@ Route::post('register', 'API\PassportController@register');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::get('get-details', 'API\PassportController@getDetails');
-    Route::get('admin','UserController@is_admin');
+    Route::get('isAdm','UserController@isAdm')->middleware('isAdmin');
 });

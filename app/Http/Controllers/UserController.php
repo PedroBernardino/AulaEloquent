@@ -17,7 +17,8 @@ class UserController extends Controller
         $users = User::all();
         return response()->success($users);
     }
-
-
+    public function isAdm() {
+        return response()->json(['Eh Administrador.']);
+    }
     
 }

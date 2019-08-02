@@ -41,7 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    public function roles() {
+        return $this->belongsToMany('App\Role');
+    }
+    
+    public function newRole($id) {
+        $role = Role::find($id);
+        $this->roles()->attach($role->id);
+    }
+    public function delRole($id) {
+        $role = Role::find($id);
+        $this->roles()->detach($role->id);
+    }
 
     public function lessons(){
         return $this->belongsToMany('App\Lesson');
@@ -57,6 +68,14 @@ class User extends Authenticatable
             }
         }
         return $filter;
+    }
+    public function hasRole($name)
+    {
+        if($this->roles()->where('cargo',$name)->count() > 0)
+        {
+            return 1;
+        }
+        return 0;
     }
 
 }
